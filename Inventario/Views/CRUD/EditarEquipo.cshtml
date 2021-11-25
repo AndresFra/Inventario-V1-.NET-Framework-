@@ -1,0 +1,114 @@
+﻿@model Inventario.Models.ViewModel.EquiposViewModel
+@{
+    ViewBag.Title = "EditarEquipo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">*@
+
+@using (Html.BeginForm("EditarEquipo", "CRUD", FormMethod.Post))
+{
+<style>
+    h4 {
+        text-align: center;
+    }
+</style>
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+
+            <div class="container">
+                <label for=""></label>
+                <div class="row col-xs-12">
+                    <h1>EQUIPO <span class="badge bg-secondary">Editar</span></h1>
+                    <br />
+                    <br />
+                    <h4>Empleado</h4>
+                    @Html.DropDownList("empleadoId", null, "Seleccione", new { @class = "btn btn-primary dropdown-toggle" })
+                    @Html.ValidationMessageFor(d => d.empleadoId, null, new { style = "color:red" })
+                    <br />
+                    <h4>Marca</h4>
+                    @Html.DropDownList("marcaId", null, "Seleccione", new { @class = "btn btn-primary dropdown-toggle" })
+                    @Html.ValidationMessageFor(d => d.marcaId, null, new { style = "color:red" })
+                    <br />
+                    <h4>Modelo</h4>
+                    @Html.DropDownList("modeloId", null, "Seleccione", new { @class = "btn btn-primary dropdown-toggle" })
+                    @Html.ValidationMessageFor(d => d.modeloId, null, new { style = "color:red" })
+                    <br />
+                    <h4>Procesador</h4>
+                    @Html.TextBoxFor(d => d.procesador, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.procesador, null, new { style = "color:red" })
+                    <br />
+                    <h4>Memoria</h4>
+                    @Html.TextBoxFor(d => d.memoria, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.memoria, null, new { style = "color:red" })
+                    <br />
+                    <h4>Disco</h4>
+                    @Html.TextBoxFor(d => d.disco, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.disco, null, new { style = "color:red" })
+                    <br />
+                    <h4>Asignación</h4>
+                    @Html.DropDownList("asignacionId", null, "Seleccione", new { @class = "btn btn-primary dropdown-toggle" })
+                    @Html.ValidationMessageFor(d => d.asignacionId, null, new { style = "color:red" })
+                    <br />
+                    <h4>Serial</h4>
+                    @Html.TextBoxFor(d => d.serial, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.serial, null, new { style = "color:red" })
+                </div>
+            </div>
+
+            <div class="container">
+                <label for=""></label>
+                <div class="row col-xs-12">
+                    <br />
+                    <h4>Accesorio</h4>
+                    @Html.DropDownList("accesorioId", null, "Seleccione", new { @class = "btn btn-primary dropdown-toggle" })
+                    @Html.ValidationMessageFor(d => d.accesorioId, null, new { style = "color:red" })
+                    <br />
+                    <h4>Monitor</h4>
+                    @Html.DropDownList("monitorId", null, "Seleccione", new { @class = "btn btn-primary dropdown-toggle" })
+                    @Html.ValidationMessageFor(d => d.monitorId, null, new { style = "color:red" })
+                    <br />
+                </div>
+            </div>
+
+            <div class="container">
+                <label for=""></label>
+                <div class="row col-xs-12">
+
+                    <h4>Fecha de creación</h4>
+                    @Html.EditorFor(d => d.FCreacion, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.FCreacion, null, new { style = "color:red" })
+                    <br />
+
+                    <h4>Fecha de actualizacion</h4>
+                    @Html.EditorFor(d => d.fActualizacion, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.fActualizacion, null, new { style = "color:red" })
+                    <br />
+                    <h4>Fecha de despacho</h4>
+                    @Html.EditorFor(d => d.fDespacho, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.fDespacho, null, new { style = "color:red" })
+                </div>
+            </div>
+
+
+            <br />
+
+            <div class="container">
+                <label for=""></label>
+                <div class="row col-xs-12">
+
+                    <button value="Guardar" type="submit" class="btn btn-primary">Guardar</button>
+
+                    <a href="~/CRUD/EquipoIndex" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+}

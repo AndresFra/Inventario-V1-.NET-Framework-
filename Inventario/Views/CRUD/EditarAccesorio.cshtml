@@ -1,0 +1,35 @@
+﻿@model Inventario.Models.ViewModel.AccesoriosViewModel
+@{
+    ViewBag.Title = "EditarAccesorio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("EditarAccesorio", "CRUD", FormMethod.Post))
+{
+    <style>
+        h4 {
+            text-align: center;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>ACCESORIO <span class="badge bg-secondary">Editar</span></h1>
+
+            @Html.HiddenFor(d => d.Id)
+            <div>
+                <h4>Nombre del accesorio</h4>
+                @Html.TextBoxFor(d => d.nombre, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.nombre, null, new { Style = "color:red" })
+            </div>
+
+            <br />
+            <div class="vstack gap-2 col-md-5 mx-auto">
+                <button value="Guardar" type="submit" class="btn btn-primary">Guardar</button>
+                @*<button href="~/CRUD/AgregarEquipo" type="button" class="btn btn-outline-secondary">Cancelar</button>*@
+                <a href="~/CRUD/AccesoriosIndex" class="btn btn-outline-secondary">Cancelar</a>
+            </div>
+        </div>
+
+    </div>
+}
+

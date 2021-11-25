@@ -1,0 +1,878 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LoginExAndresModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accesorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Asignacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Posicion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Localidad" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpleadoId" Type="int" Nullable="false" />
+          <Property Name="MarcaId" Type="int" Nullable="false" />
+          <Property Name="Procesador" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Memoria" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Disco" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AsignacionId" Type="int" Nullable="false" />
+          <Property Name="Serial" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModeloId" Type="int" Nullable="false" />
+          <Property Name="MonitorId" Type="int" Nullable="false" />
+          <Property Name="AccesorioId" Type="int" Nullable="false" />
+          <Property Name="Fcreacion" Type="datetime" />
+          <Property Name="Factualizacion" Type="datetime" />
+          <Property Name="Fdespacho" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Monitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Serial" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Modelo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tamaño" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+          <Property Name="IdConsulta" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolConsulta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdModulo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SalidaEquipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" />
+          <Property Name="Serial" Type="varchar" MaxLength="50" />
+          <Property Name="Modelo" Type="varchar" MaxLength="50" />
+          <Property Name="Empleado" Type="varchar" MaxLength="50" />
+          <Property Name="FechaDespacho" Type="datetime" />
+          <Property Name="EquipoId" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdRol" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Equipo__Accesori__0B91BA14">
+          <End Role="Accesorio" Type="Self.Accesorio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accesorio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="AccesorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__Asignaci__06CD04F7">
+          <End Role="Asignacion" Type="Self.Asignacion" Multiplicity="1" />
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="AsignacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__Empleado__07C12930">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__MarcaId__08B54D69">
+          <End Role="Marca" Type="Self.Marca" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__ModeloId__09A971A2">
+          <End Role="Modelo" Type="Self.Modelo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__MonitorI__0A9D95DB">
+          <End Role="Monitor" Type="Self.Monitor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Monitor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="MonitorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolAdmin__IdCons__5535A963">
+          <End Role="RolConsulta" Type="Self.RolConsulta" Multiplicity="1" />
+          <End Role="RolAdmin" Type="Self.RolAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RolConsulta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolAdmin">
+              <PropertyRef Name="IdConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolAdmin__IdRol__4AB81AF0">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="RolAdmin" Type="Self.RolAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolAdmin">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolConsul__IdMod__5441852A">
+          <End Role="modulo" Type="Self.modulo" Multiplicity="1" />
+          <End Role="RolConsulta" Type="Self.RolConsulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolConsulta">
+              <PropertyRef Name="IdModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalidaEqu__Equip__1AD3FDA4">
+          <End Role="Equipo" Type="Self.Equipo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SalidaEquipo" Type="Self.SalidaEquipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalidaEquipo">
+              <PropertyRef Name="EquipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__usuario__IdRol__5812160E">
+          <End Role="Rol" Type="Self.Rol" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoginExAndresModelStoreContainer">
+          <EntitySet Name="Accesorio" EntityType="Self.Accesorio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Asignacion" EntityType="Self.Asignacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Equipo" EntityType="Self.Equipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca" EntityType="Self.Marca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modelo" EntityType="Self.Modelo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="modulo" EntityType="Self.modulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Monitor" EntityType="Self.Monitor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolAdmin" EntityType="Self.RolAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolConsulta" EntityType="Self.RolConsulta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalidaEquipo" EntityType="Self.SalidaEquipo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Equipo__Accesori__0B91BA14" Association="Self.FK__Equipo__Accesori__0B91BA14">
+            <End Role="Accesorio" EntitySet="Accesorio" />
+            <End Role="Equipo" EntitySet="Equipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__Asignaci__06CD04F7" Association="Self.FK__Equipo__Asignaci__06CD04F7">
+            <End Role="Asignacion" EntitySet="Asignacion" />
+            <End Role="Equipo" EntitySet="Equipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__Empleado__07C12930" Association="Self.FK__Equipo__Empleado__07C12930">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Equipo" EntitySet="Equipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__MarcaId__08B54D69" Association="Self.FK__Equipo__MarcaId__08B54D69">
+            <End Role="Marca" EntitySet="Marca" />
+            <End Role="Equipo" EntitySet="Equipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__ModeloId__09A971A2" Association="Self.FK__Equipo__ModeloId__09A971A2">
+            <End Role="Modelo" EntitySet="Modelo" />
+            <End Role="Equipo" EntitySet="Equipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__MonitorI__0A9D95DB" Association="Self.FK__Equipo__MonitorI__0A9D95DB">
+            <End Role="Monitor" EntitySet="Monitor" />
+            <End Role="Equipo" EntitySet="Equipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolAdmin__IdCons__5535A963" Association="Self.FK__RolAdmin__IdCons__5535A963">
+            <End Role="RolConsulta" EntitySet="RolConsulta" />
+            <End Role="RolAdmin" EntitySet="RolAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolAdmin__IdRol__4AB81AF0" Association="Self.FK__RolAdmin__IdRol__4AB81AF0">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="RolAdmin" EntitySet="RolAdmin" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolConsul__IdMod__5441852A" Association="Self.FK__RolConsul__IdMod__5441852A">
+            <End Role="modulo" EntitySet="modulo" />
+            <End Role="RolConsulta" EntitySet="RolConsulta" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalidaEqu__Equip__1AD3FDA4" Association="Self.FK__SalidaEqu__Equip__1AD3FDA4">
+            <End Role="Equipo" EntitySet="Equipo" />
+            <End Role="SalidaEquipo" EntitySet="SalidaEquipo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__usuario__IdRol__5812160E" Association="Self.FK__usuario__IdRol__5812160E">
+            <End Role="Rol" EntitySet="Rol" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoginExAndresModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LoginExAndresEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="moduloes" EntityType="LoginExAndresModel.modulo" />
+          <EntitySet Name="Rols" EntityType="LoginExAndresModel.Rol" />
+          <EntitySet Name="RolAdmins" EntityType="LoginExAndresModel.RolAdmin" />
+          <EntitySet Name="RolConsultas" EntityType="LoginExAndresModel.RolConsulta" />
+          <EntitySet Name="sysdiagrams" EntityType="LoginExAndresModel.sysdiagram" />
+          <AssociationSet Name="FK__RolConsul__IdMod__5441852A" Association="LoginExAndresModel.FK__RolConsul__IdMod__5441852A">
+            <End Role="modulo" EntitySet="moduloes" />
+            <End Role="RolConsulta" EntitySet="RolConsultas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolAdmin__IdRol__4AB81AF0" Association="LoginExAndresModel.FK__RolAdmin__IdRol__4AB81AF0">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="RolAdmin" EntitySet="RolAdmins" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RolAdmin__IdCons__5535A963" Association="LoginExAndresModel.FK__RolAdmin__IdCons__5535A963">
+            <End Role="RolConsulta" EntitySet="RolConsultas" />
+            <End Role="RolAdmin" EntitySet="RolAdmins" />
+          </AssociationSet>
+          <EntitySet Name="usuarios" EntityType="LoginExAndresModel.usuario" />
+          <AssociationSet Name="FK__usuario__IdRol__5812160E" Association="LoginExAndresModel.FK__usuario__IdRol__5812160E">
+            <End Role="Rol" EntitySet="Rols" />
+            <End Role="usuario" EntitySet="usuarios" />
+          </AssociationSet>
+          <EntitySet Name="Accesorios" EntityType="LoginExAndresModel.Accesorio" />
+          <EntitySet Name="Asignacions" EntityType="LoginExAndresModel.Asignacion" />
+          <EntitySet Name="Empleadoes" EntityType="LoginExAndresModel.Empleado" />
+          <EntitySet Name="Marcas" EntityType="LoginExAndresModel.Marca" />
+          <EntitySet Name="Modeloes" EntityType="LoginExAndresModel.Modelo" />
+          <EntitySet Name="Monitors" EntityType="LoginExAndresModel.Monitor" />
+          <EntitySet Name="Equipoes" EntityType="LoginExAndresModel.Equipo" />
+          <EntitySet Name="SalidaEquipoes" EntityType="LoginExAndresModel.SalidaEquipo" />
+          <AssociationSet Name="FK__Equipo__Accesori__0B91BA14" Association="LoginExAndresModel.FK__Equipo__Accesori__0B91BA14">
+            <End Role="Accesorio" EntitySet="Accesorios" />
+            <End Role="Equipo" EntitySet="Equipoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__Asignaci__06CD04F7" Association="LoginExAndresModel.FK__Equipo__Asignaci__06CD04F7">
+            <End Role="Asignacion" EntitySet="Asignacions" />
+            <End Role="Equipo" EntitySet="Equipoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__Empleado__07C12930" Association="LoginExAndresModel.FK__Equipo__Empleado__07C12930">
+            <End Role="Empleado" EntitySet="Empleadoes" />
+            <End Role="Equipo" EntitySet="Equipoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__MarcaId__08B54D69" Association="LoginExAndresModel.FK__Equipo__MarcaId__08B54D69">
+            <End Role="Marca" EntitySet="Marcas" />
+            <End Role="Equipo" EntitySet="Equipoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__ModeloId__09A971A2" Association="LoginExAndresModel.FK__Equipo__ModeloId__09A971A2">
+            <End Role="Modelo" EntitySet="Modeloes" />
+            <End Role="Equipo" EntitySet="Equipoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Equipo__MonitorI__0A9D95DB" Association="LoginExAndresModel.FK__Equipo__MonitorI__0A9D95DB">
+            <End Role="Monitor" EntitySet="Monitors" />
+            <End Role="Equipo" EntitySet="Equipoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalidaEqu__Equip__1AD3FDA4" Association="LoginExAndresModel.FK__SalidaEqu__Equip__1AD3FDA4">
+            <End Role="Equipo" EntitySet="Equipoes" />
+            <End Role="SalidaEquipo" EntitySet="SalidaEquipoes" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="modulo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RolConsultas" Relationship="LoginExAndresModel.FK__RolConsul__IdMod__5441852A" FromRole="modulo" ToRole="RolConsulta" />
+        </EntityType>
+        <EntityType Name="Rol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="RolAdmins" Relationship="LoginExAndresModel.FK__RolAdmin__IdRol__4AB81AF0" FromRole="Rol" ToRole="RolAdmin" />
+          <NavigationProperty Name="usuarios" Relationship="LoginExAndresModel.FK__usuario__IdRol__5812160E" FromRole="Rol" ToRole="usuario" />
+        </EntityType>
+        <EntityType Name="RolAdmin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <Property Name="IdConsulta" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rol" Relationship="LoginExAndresModel.FK__RolAdmin__IdRol__4AB81AF0" FromRole="RolAdmin" ToRole="Rol" />
+          <NavigationProperty Name="RolConsulta" Relationship="LoginExAndresModel.FK__RolAdmin__IdCons__5535A963" FromRole="RolAdmin" ToRole="RolConsulta" />
+        </EntityType>
+        <EntityType Name="RolConsulta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdModulo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="modulo" Relationship="LoginExAndresModel.FK__RolConsul__IdMod__5441852A" FromRole="RolConsulta" ToRole="modulo" />
+          <NavigationProperty Name="RolAdmins" Relationship="LoginExAndresModel.FK__RolAdmin__IdCons__5535A963" FromRole="RolConsulta" ToRole="RolAdmin" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__RolConsul__IdMod__5441852A">
+          <End Type="LoginExAndresModel.modulo" Role="modulo" Multiplicity="1" />
+          <End Type="LoginExAndresModel.RolConsulta" Role="RolConsulta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolConsulta">
+              <PropertyRef Name="IdModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolAdmin__IdRol__4AB81AF0">
+          <End Type="LoginExAndresModel.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="LoginExAndresModel.RolAdmin" Role="RolAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolAdmin">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RolAdmin__IdCons__5535A963">
+          <End Type="LoginExAndresModel.RolConsulta" Role="RolConsulta" Multiplicity="1" />
+          <End Type="LoginExAndresModel.RolAdmin" Role="RolAdmin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RolConsulta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolAdmin">
+              <PropertyRef Name="IdConsulta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdRol" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Rol" Relationship="LoginExAndresModel.FK__usuario__IdRol__5812160E" FromRole="usuario" ToRole="Rol" />
+        </EntityType>
+        <Association Name="FK__usuario__IdRol__5812160E">
+          <End Type="LoginExAndresModel.Rol" Role="Rol" Multiplicity="1" />
+          <End Type="LoginExAndresModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rol">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="IdRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Accesorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipoes" Relationship="LoginExAndresModel.FK__Equipo__Accesori__0B91BA14" FromRole="Accesorio" ToRole="Equipo" />
+        </EntityType>
+        <EntityType Name="Asignacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipoes" Relationship="LoginExAndresModel.FK__Equipo__Asignaci__06CD04F7" FromRole="Asignacion" ToRole="Equipo" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Posicion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Localidad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipoes" Relationship="LoginExAndresModel.FK__Equipo__Empleado__07C12930" FromRole="Empleado" ToRole="Equipo" />
+        </EntityType>
+        <EntityType Name="Marca">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipoes" Relationship="LoginExAndresModel.FK__Equipo__MarcaId__08B54D69" FromRole="Marca" ToRole="Equipo" />
+        </EntityType>
+        <EntityType Name="Modelo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Equipoes" Relationship="LoginExAndresModel.FK__Equipo__ModeloId__09A971A2" FromRole="Modelo" ToRole="Equipo" />
+        </EntityType>
+        <EntityType Name="Monitor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Serial" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Tamaño" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Equipoes" Relationship="LoginExAndresModel.FK__Equipo__MonitorI__0A9D95DB" FromRole="Monitor" ToRole="Equipo" />
+        </EntityType>
+        <EntityType Name="Equipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpleadoId" Type="Int32" Nullable="false" />
+          <Property Name="MarcaId" Type="Int32" Nullable="false" />
+          <Property Name="Procesador" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Memoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Disco" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AsignacionId" Type="Int32" Nullable="false" />
+          <Property Name="Serial" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModeloId" Type="Int32" Nullable="false" />
+          <Property Name="MonitorId" Type="Int32" Nullable="false" />
+          <Property Name="AccesorioId" Type="Int32" Nullable="false" />
+          <Property Name="Fcreacion" Type="DateTime" Precision="3" />
+          <Property Name="Factualizacion" Type="DateTime" Precision="3" />
+          <Property Name="Fdespacho" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Accesorio" Relationship="LoginExAndresModel.FK__Equipo__Accesori__0B91BA14" FromRole="Equipo" ToRole="Accesorio" />
+          <NavigationProperty Name="Asignacion" Relationship="LoginExAndresModel.FK__Equipo__Asignaci__06CD04F7" FromRole="Equipo" ToRole="Asignacion" />
+          <NavigationProperty Name="Empleado" Relationship="LoginExAndresModel.FK__Equipo__Empleado__07C12930" FromRole="Equipo" ToRole="Empleado" />
+          <NavigationProperty Name="Marca" Relationship="LoginExAndresModel.FK__Equipo__MarcaId__08B54D69" FromRole="Equipo" ToRole="Marca" />
+          <NavigationProperty Name="Modelo" Relationship="LoginExAndresModel.FK__Equipo__ModeloId__09A971A2" FromRole="Equipo" ToRole="Modelo" />
+          <NavigationProperty Name="Monitor" Relationship="LoginExAndresModel.FK__Equipo__MonitorI__0A9D95DB" FromRole="Equipo" ToRole="Monitor" />
+          <NavigationProperty Name="SalidaEquipoes" Relationship="LoginExAndresModel.FK__SalidaEqu__Equip__1AD3FDA4" FromRole="Equipo" ToRole="SalidaEquipo" />
+        </EntityType>
+        <EntityType Name="SalidaEquipo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Serial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Empleado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaDespacho" Type="DateTime" Precision="3" />
+          <Property Name="EquipoId" Type="Int32" />
+          <NavigationProperty Name="Equipo" Relationship="LoginExAndresModel.FK__SalidaEqu__Equip__1AD3FDA4" FromRole="SalidaEquipo" ToRole="Equipo" />
+        </EntityType>
+        <Association Name="FK__Equipo__Accesori__0B91BA14">
+          <End Type="LoginExAndresModel.Accesorio" Role="Accesorio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LoginExAndresModel.Equipo" Role="Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accesorio">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="AccesorioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__Asignaci__06CD04F7">
+          <End Type="LoginExAndresModel.Asignacion" Role="Asignacion" Multiplicity="1" />
+          <End Type="LoginExAndresModel.Equipo" Role="Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asignacion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="AsignacionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__Empleado__07C12930">
+          <End Type="LoginExAndresModel.Empleado" Role="Empleado" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LoginExAndresModel.Equipo" Role="Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="EmpleadoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__MarcaId__08B54D69">
+          <End Type="LoginExAndresModel.Marca" Role="Marca" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LoginExAndresModel.Equipo" Role="Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="MarcaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__ModeloId__09A971A2">
+          <End Type="LoginExAndresModel.Modelo" Role="Modelo" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LoginExAndresModel.Equipo" Role="Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="ModeloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Equipo__MonitorI__0A9D95DB">
+          <End Type="LoginExAndresModel.Monitor" Role="Monitor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LoginExAndresModel.Equipo" Role="Equipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Monitor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Equipo">
+              <PropertyRef Name="MonitorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalidaEqu__Equip__1AD3FDA4">
+          <End Type="LoginExAndresModel.Equipo" Role="Equipo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="LoginExAndresModel.SalidaEquipo" Role="SalidaEquipo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Equipo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SalidaEquipo">
+              <PropertyRef Name="EquipoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoginExAndresModelStoreContainer" CdmEntityContainer="LoginExAndresEntities">
+          <EntitySetMapping Name="moduloes">
+            <EntityTypeMapping TypeName="LoginExAndresModel.modulo">
+              <MappingFragment StoreEntitySet="modulo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rols">
+            <EntityTypeMapping TypeName="LoginExAndresModel.Rol">
+              <MappingFragment StoreEntitySet="Rol">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolAdmins">
+            <EntityTypeMapping TypeName="LoginExAndresModel.RolAdmin">
+              <MappingFragment StoreEntitySet="RolAdmin">
+                <ScalarProperty Name="IdConsulta" ColumnName="IdConsulta" />
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolConsultas">
+            <EntityTypeMapping TypeName="LoginExAndresModel.RolConsulta">
+              <MappingFragment StoreEntitySet="RolConsulta">
+                <ScalarProperty Name="IdModulo" ColumnName="IdModulo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LoginExAndresModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuarios">
+            <EntityTypeMapping TypeName="LoginExAndresModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="IdRol" ColumnName="IdRol" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accesorios">
+            <EntityTypeMapping TypeName="LoginExAndresModel.Accesorio">
+              <MappingFragment StoreEntitySet="Accesorio">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asignacions">
+            <EntityTypeMapping TypeName="LoginExAndresModel.Asignacion">
+              <MappingFragment StoreEntitySet="Asignacion">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleadoes">
+            <EntityTypeMapping TypeName="LoginExAndresModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="Localidad" ColumnName="Localidad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Posicion" ColumnName="Posicion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marcas">
+            <EntityTypeMapping TypeName="LoginExAndresModel.Marca">
+              <MappingFragment StoreEntitySet="Marca">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modeloes">
+            <EntityTypeMapping TypeName="LoginExAndresModel.Modelo">
+              <MappingFragment StoreEntitySet="Modelo">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Monitors">
+            <EntityTypeMapping TypeName="LoginExAndresModel.Monitor">
+              <MappingFragment StoreEntitySet="Monitor">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Tamaño" ColumnName="Tamaño" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Equipoes">
+            <EntityTypeMapping TypeName="LoginExAndresModel.Equipo">
+              <MappingFragment StoreEntitySet="Equipo">
+                <ScalarProperty Name="Fdespacho" ColumnName="Fdespacho" />
+                <ScalarProperty Name="Factualizacion" ColumnName="Factualizacion" />
+                <ScalarProperty Name="Fcreacion" ColumnName="Fcreacion" />
+                <ScalarProperty Name="AccesorioId" ColumnName="AccesorioId" />
+                <ScalarProperty Name="MonitorId" ColumnName="MonitorId" />
+                <ScalarProperty Name="ModeloId" ColumnName="ModeloId" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="AsignacionId" ColumnName="AsignacionId" />
+                <ScalarProperty Name="Disco" ColumnName="Disco" />
+                <ScalarProperty Name="Memoria" ColumnName="Memoria" />
+                <ScalarProperty Name="Procesador" ColumnName="Procesador" />
+                <ScalarProperty Name="MarcaId" ColumnName="MarcaId" />
+                <ScalarProperty Name="EmpleadoId" ColumnName="EmpleadoId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SalidaEquipoes">
+            <EntityTypeMapping TypeName="LoginExAndresModel.SalidaEquipo">
+              <MappingFragment StoreEntitySet="SalidaEquipo">
+                <ScalarProperty Name="EquipoId" ColumnName="EquipoId" />
+                <ScalarProperty Name="FechaDespacho" ColumnName="FechaDespacho" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Serial" ColumnName="Serial" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

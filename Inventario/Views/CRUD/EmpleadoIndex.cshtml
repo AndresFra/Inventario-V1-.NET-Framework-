@@ -1,0 +1,96 @@
+﻿@model List<Inventario.Models.ViewModel.ListEmpleadoModelView>
+@{
+    ViewBag.Title = "EmpleadoIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var usuario = (Inventario.Models.usuario)Session["Usuario"];
+}
+
+<div style="text-align:center">
+    <h1> <span class="badge bg-warning">EMPLEADO</span></h1>
+</div>
+<div class="row" style="text-align:right;padding:5px;">
+    <a href="~/CRUD/AgregarEmpleado" style="@(usuario.IdRol.ToString() == "1" ? "display:block" : "display:none")" class="btn btn-primary">Agregar</a>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <table id="tabla" class="table table-bordered table-hover dataTable dtr-inline">
+            
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Posicion</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Localidad</th>
+                    <th></th>
+                </tr>
+            
+            <tbody>
+                <tr>
+                    @foreach (var oElemento in Model)
+                    {
+                    <tr>
+                        <td>@oElemento.Id</td>
+                        <td>@oElemento.nombre</td>
+                        <td>@oElemento.codigo</td>
+                        <td>@oElemento.posicion</td>
+                        <td>@oElemento.direccion</td>
+                        <td>@oElemento.localidad</td>
+
+                        <td style="@(usuario.IdRol.ToString() == "1" ? "display:block" : "display:none")">
+                            <a class="btn btn-primary" href="~/CRUD/EditarEmpleado/@oElemento.Id">Editar</a>
+                            @*<a class="btn btn-danger" href="~/CRUD/EliminarEmpleado/@oElemento.Id">Eliminar</a>*@
+
+                            <button type="button" class="btn btn-danger btnEliminar" data-model-id="@oElemento.Id" data-model="@oElemento.nombre">
+                                Eliminar
+                            </button>
+                        </td>
+                    </tr>
+
+                }
+
+                </tbody>
+            </table>
+
+
+        </div>
+
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+
+    $(".btnEliminar").click(function () {
+            var id = $(this).attr("data-model-id");
+            var nombre = $(this).attr('data-Model');
+
+            swal({
+                title: "Esta seguro?",
+                text: "Desea eliminar el empleado " + nombre,
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Si, Eliminar",
+                closeOnConfirm: false
+            },
+                function () {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Content("~/CRUD/EliminarEmpleado/")' + id,
+                        dataType: "json",
+                        success: function (result) {
+                            location.reload();
+                        },
+                        error: function (errormessage) {
+                            swal("Oops...", "¡Algo salió mal! " + errormessage+"", "error");
+                       }
+                    });
+                });
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#tabla").DataTable();
+        });
+    </script>

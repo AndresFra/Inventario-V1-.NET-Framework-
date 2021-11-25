@@ -1,0 +1,112 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inventario | EDEeste</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <link rel="stylesheet" href="~/FrontEnd/plugins/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" href="~/FrontEnd/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/FrontEnd/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+    <style>
+        body {
+            background-image: url('/FrontEnd/dist/img/EDEESTEPuenteDuarte.jfif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            
+        }
+    </style>
+    <div class="login-box accent-dark"  >
+
+        <div class="card card-outline card-gray-dark" style="opacity: 0.9">
+            <div class="card-header text-center">
+                <a href="" class="h1"><b>Inventario</b>Tech</a>
+            </div>
+            <div class="card-body accent-dark" >
+                <p class="login-box-msg">Ingrese sus credenciales para iniciar sesion.</p>
+
+                <div style="color:red">
+                    @ViewBag.error
+                </div>
+                <form action=@Url.Content("~/Acceso/Login") method="post">
+                    <div class="input-group mb-3">
+                        <input type="email" name="User" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="password" name="pass" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="icheck-primary">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">
+                                    Recuerdame!
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-outline-dark accent-purple"> Iniciar sesión </button>
+                        </div>
+
+
+
+
+                    </div>
+                </form>
+
+
+
+                @*<p class="mb-1">
+                        <a href="forgot-password.html">Olvide mi contraseña</a>
+                    </p>
+                    <p class="mb-0">
+                        <a href="register.html" class="text-center">Registrar un nuevo miembro</a>
+                    </p>*@
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="~/FrontEnd/plugins/jquery/jquery.min.js"></script>
+
+    <script src="~/FrontEnd/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/FrontEnd/dist/js/adminlte.min.js"></script>
+</body>
+
+<script type="text/javascript">
+    window.history.forward();
+    function noBack() {
+        window.history.forward();
+    }
+</script>
+
+<body onLoad="noBack();" onpageshow="if (event.persisted) noBack();" onUnload="">
+
+</html>
+

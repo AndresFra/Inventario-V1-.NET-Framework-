@@ -1,0 +1,60 @@
+﻿@model Inventario.Models.ViewModel.MonitorViewModel
+@{
+    ViewBag.Title = "AgregarMonitor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">*@
+
+@using (Html.BeginForm("AgregarMonitor", "CRUD", FormMethod.Post))
+{
+    <style>
+        h4 {
+            text-align: center;
+        }
+    </style>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container">
+                <label for=""></label>
+                <div class="row col-xs-12">
+                    <h1>MONITOR <span class="badge bg-secondary">Agregar</span></h1>
+
+                    <h4>Marca</h4>
+                    @Html.TextBoxFor(d => d.marca, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.marca, null, new { Style = "color:red" })
+                    <br />
+                    <h4>Serial</h4>
+                    @Html.TextBoxFor(d => d.serial, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.serial, null, new { Style = "color:red" })
+                    <br />
+                    <h4>Modelo</h4>
+                    @Html.TextBoxFor(d => d.modelo, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.modelo, null, new { Style = "color:red" })
+                    <br />
+                    <h4>Tamaño</h4>
+                    @Html.TextBoxFor(d => d.tamaño, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.tamaño, null, new { Style = "color:red" })
+                    <br />
+                    <h4>Cantidad de monitores</h4>
+                    @Html.TextBoxFor(d => d.cantidad, "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(d => d.cantidad, null, new { Style = "color:red" })
+
+
+                    <br />
+
+                    <button value="Guardar" type="submit" class="btn btn-primary">Guardar</button>
+                    @*<button href="~/CRUD/AgregarEquipo" type="button" class="btn btn-outline-secondary">Cancelar</button>*@
+                    <a href="~/CRUD/MonitorIndex" class="btn btn-outline-secondary">Cancelar</a>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+}
+
+

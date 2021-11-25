@@ -1,0 +1,55 @@
+﻿@model Inventario.Models.ViewModel.UsuariosViewModel
+@{
+    ViewBag.Title = "AgregarUsuario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AgregarUsuario", "Acceso", FormMethod.Post))
+{
+
+    <div class="row">
+
+        <div class="col-md-12">
+            <div>
+                <h1>USUARIO <span class="badge bg-secondary">Agregar</span></h1>
+                @Html.LabelFor(d => d.usuario)
+                @Html.TextBoxFor(d => d.usuario, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.usuario, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Email)
+                @Html.TextBoxFor(d => d.Email, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Email, null, new { @class = "red" })
+            </div>
+            <div>
+                @Html.LabelFor(d => d.Password)
+                @Html.TextBoxFor(d => d.Password, "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(d => d.Password, null, new { @class = "red" })
+            </div>
+
+            <div>
+                @Html.LabelFor(d => d.idRol)<br />
+                @Html.DropDownList("idRol", null, "Seleccione", new { @class = "btn btn-primary dropdown-toggle" })
+            </div>
+
+            <br />
+            <div class="container">
+                <label for=""></label>
+                <div class="row col-xs-12">
+
+                    <button value="Guardar" type="submit" class="btn btn-primary">Guardar</button> 
+                  
+                    <a href="~/Acceso/UsuarioIndex" class="btn btn-danger">Cancelar</a>
+                </div>
+            </div>
+
+            @*<div style="text-align:right;">
+                <input value="Guardar" class="btn btn-primary" type="submit" />
+            </div>*@
+        </div>
+
+    </div>
+}
+
+
+
