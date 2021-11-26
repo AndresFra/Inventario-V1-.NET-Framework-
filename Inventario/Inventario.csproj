@@ -396,6 +396,7 @@
     <Content Include="FrontEnd\dist\img\avatar3.png" />
     <Content Include="FrontEnd\dist\img\avatar4.png" />
     <Content Include="FrontEnd\dist\img\avatar5.png" />
+    <Content Include="FrontEnd\dist\img\Blog_What-is-Inventory.png" />
     <Content Include="FrontEnd\dist\img\blue-background.jpg" />
     <Content Include="FrontEnd\dist\img\boxed-bg.jpg" />
     <Content Include="FrontEnd\dist\img\boxed-bg.png" />
@@ -411,6 +412,8 @@
     <Content Include="FrontEnd\dist\img\EDEESTEPuenteDuarte.jfif" />
     <Content Include="FrontEnd\dist\img\icons.png" />
     <Content Include="FrontEnd\dist\img\Ingeniero-Tomas-Ozuna-Tapia-durante-la-rueda-de-prensa-768x457.jpg" />
+    <Content Include="FrontEnd\dist\img\inventory-control-software.jpg" />
+    <Content Include="FrontEnd\dist\img\Inventory-Reduction-Strategies-For-Excess-Or-Slow-Moving-Stock.jpg" />
     <Content Include="FrontEnd\dist\img\Logo-EDEEste-Azul-Amarillo.png" />
     <Content Include="FrontEnd\dist\img\logo.png" />
     <Content Include="FrontEnd\dist\img\oficina-comercial-jumbo_13762324_20200427173258.jpg" />
